@@ -1,5 +1,6 @@
 package ru.rzik.bo.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,12 +38,15 @@ public class BoServiceImplementation implements BoService {
     }
 
     @Override
-    public Bo editBo(UUID id, Bo bo) {
-        Bo newBo = boRepository.findById(id).orElseThrow();
-        newBo.setId(id);
-        newBo.setName(bo.getName());
-        newBo.setDescription(bo.getDescription());
-        return boRepository.save(newBo);
+    public ResponseEntity<?> editBo(UUID id, Bo bo) {
+        if (boRepository.existsById(id)) {
+            Bo newBo = boRepository.findById(id).orElseThrow();
+            newBo.setName(bo.getName());
+            newBo.setDescription(bo.getDescription());
+            return new ResponseEntity<>(boRepository.save(newBo), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(boRepository.save(bo), HttpStatus.CREATED);
+        }
     }
 
     @Override
@@ -53,5 +57,10 @@ public class BoServiceImplementation implements BoService {
         } else {
             return ResponseEntity.status(404).body("Id " + id + " not found");
         }
+    }
+
+    @Override
+    public void deleteAllBos() {
+        boRepository.deleteAll();
     }
 }

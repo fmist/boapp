@@ -1,5 +1,6 @@
 package ru.rzik.bo.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.rzik.bo.model.Bo;
@@ -38,12 +39,18 @@ public class BoController {
     }
 
     @PutMapping("/edit/{id}")
-    private Bo update(@PathVariable UUID id, @RequestBody Bo bo) {
+    private ResponseEntity<?> update(@PathVariable UUID id, @RequestBody Bo bo) {
         return boService.editBo(id, bo);
     }
 
     @DeleteMapping("/delete/{id}")
     private ResponseEntity<?> delete(@PathVariable UUID id) {
         return boService.deleteBo(id);
+    }
+
+    @DeleteMapping("/clear")
+    private ResponseEntity<?> clear() {
+        boService.deleteAllBos();
+        return new ResponseEntity<>("List cleared", HttpStatus.OK);
     }
 }

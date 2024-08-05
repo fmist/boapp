@@ -9,6 +9,7 @@ public interface BoService {
     List<Bo> getAllBos();
     ResponseEntity<?> getBoById(UUID id);
     Bo saveBo(Bo bo);
-    Bo editBo(UUID id, Bo bo);
+    ResponseEntity<?> editBo(UUID id, Bo bo);
     ResponseEntity<?> deleteBo(UUID id);
+    void deleteAllBos();
 }
