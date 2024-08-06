@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.rzik.bo.model.Bo;
 import ru.rzik.bo.repository.BoRepository;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ public class BoServiceImplementation implements BoService {
     public BoServiceImplementation(BoRepository boRepository) {
         this.boRepository = boRepository;
     }
+
     @Override
     public List<Bo> getAllBos() {
         return boRepository.findAll();
