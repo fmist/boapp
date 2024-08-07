@@ -51,6 +51,6 @@ public class BoController {
     @DeleteMapping("/clear")
     private ResponseEntity<?> clear() {
         boService.deleteAllBos();
-        return new ResponseEntity<>("List cleared", HttpStatus.OK);
+        return new ResponseEntity<>("List cleared", HttpStatus.NO_CONTENT);
     }
 }
