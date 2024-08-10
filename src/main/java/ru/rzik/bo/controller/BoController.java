@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequestMapping()
 public class BoController {
 
-    BoService boService;
+    private final BoService boService;
 
     public BoController(BoService boService) {
         this.boService = boService;

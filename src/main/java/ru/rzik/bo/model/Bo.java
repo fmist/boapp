@@ -19,6 +19,4 @@ public class Bo {
     private String name;
     private String description;
 
-    public Bo() {
-    }
 }
