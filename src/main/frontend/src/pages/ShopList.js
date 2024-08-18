@@ -17,7 +17,6 @@ export default function ShopList() {
         <Table striped bordered hover>
             <thead>
             <tr>
-                <th>Created</th>
                 <th>Product</th>
                 <th>Description</th>
                 <th>Action</th>
@@ -27,7 +26,6 @@ export default function ShopList() {
             {
                 posts.map((posts) => (
                     <tr key={posts.id}>
-                        <td>{posts.time}</td>
                         <td>{posts.name}</td>
                         <td>{posts.description}</td>
                         <td className="text-right w-25">

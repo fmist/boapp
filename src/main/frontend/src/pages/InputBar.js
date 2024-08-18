@@ -50,8 +50,7 @@ const InputBar = () => {
                 function () {
                     addProduct(product)
                         .then(r => {console.log(r.data)})
-                    navigate("/")
-                    window.location.reload()
+                    window.location.replace("/");
                 }
             }>Submit</Button>
         </Container>

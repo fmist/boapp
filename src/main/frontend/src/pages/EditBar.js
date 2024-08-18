@@ -54,8 +54,7 @@ const EditBar = () => {
             <Button onClick={
                 function () {
                     editProduct(id, product)
-                    navigate("/")
-                    window.location.reload()
+                    window.location.replace("/");
                 }
             }>Submit</Button>
         </Container>

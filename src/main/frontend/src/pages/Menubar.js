@@ -6,10 +6,10 @@ const Menubar = () => {
     return (
         <Navbar bg="dark" data-bs-theme="dark">
             <Container>
-                <Navbar.Brand href="/">Guitar shop</Navbar.Brand>
+                <Navbar.Brand href="/">Bo app</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link href="/">Products</Nav.Link>
-                    <Nav.Link href="/add">New product</Nav.Link>
+                    <Nav.Link href="/">Bo's</Nav.Link>
+                    <Nav.Link href="/add">New bo</Nav.Link>
                     <Nav.Link href="/about">About</Nav.Link>
                 </Nav>
             </Container>

@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+   agent any
    environment {
            PATH = "$PATH:/usr/local/bin"
        }
@@ -26,7 +26,7 @@ pipeline {
                 DB_DATA = credentials('mysql')
              }
              steps {
-               sh "USER=${DB_DATA_USR} PASSWORD=${DB_DATA_PSW} docker-compose up -d --wait --build"
+               sh "USER=user PASSWORD=123 docker-compose up -d --wait --build"
              }
         }
     }
