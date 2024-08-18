@@ -3,8 +3,6 @@ package ru.rzik.bo.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.rzik.bo.exception.BoErrorData;
-import ru.rzik.bo.exception.BoException;
 import ru.rzik.bo.model.Bo;
 import ru.rzik.bo.service.BoService;
 
@@ -53,19 +51,5 @@ public class BoController {
     private ResponseEntity<?> clear() {
         boService.deleteAllBos();
         return new ResponseEntity<>("List cleared", HttpStatus.NO_CONTENT);
-    }
-
-    @ExceptionHandler
-    private ResponseEntity<BoErrorData> handleException(BoException exception) {
-        BoErrorData errorData = new BoErrorData();
-        errorData.setInfo(exception.getMessage());
-        return new ResponseEntity<>(errorData, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler
-    private ResponseEntity<BoErrorData> handleException(Exception exception) {
-        BoErrorData errorData = new BoErrorData();
-        errorData.setInfo(exception.getMessage());
-        return new ResponseEntity<>(errorData, HttpStatus.BAD_REQUEST);
     }
 }
