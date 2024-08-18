@@ -4,22 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import java.util.UUID;
-
+@Data
 @Entity
 public class Bo {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Getter @Setter
-    private UUID id;
-    @Getter @Setter
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    private Long id;
     private String name;
-    @Getter @Setter
     private String description;
 
-    public Bo() {
-    }
 }

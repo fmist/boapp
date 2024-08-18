@@ -2,13 +2,19 @@ package ru.rzik.bo.service;
 
 import org.springframework.http.ResponseEntity;
 import ru.rzik.bo.model.Bo;
+
 import java.util.List;
-import java.util.UUID;
 
 public interface BoService {
     List<Bo> getAllBos();
-    ResponseEntity<?> getBoById(UUID id);
+
+    ResponseEntity<?> getBoById(Long id);
+
     Bo saveBo(Bo bo);
-    Bo editBo(UUID id, Bo bo);
-    ResponseEntity<?> deleteBo(UUID id);
+
+    ResponseEntity<?> editBo(Long id, Bo bo);
+
+    ResponseEntity<?> deleteBo(Long id);
+
+    void deleteAllBos();
 }

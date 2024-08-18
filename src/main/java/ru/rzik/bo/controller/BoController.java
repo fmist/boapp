@@ -1,5 +1,6 @@
 package ru.rzik.bo.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.rzik.bo.model.Bo;
@@ -8,13 +9,13 @@ import ru.rzik.bo.service.BoService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping()
+@CrossOrigin(origins = {"http://192.168.51.254:3000", "http://192.168.51.254:8083"})
 public class BoController {
 
-    BoService boService;
+    private final BoService boService;
 
     public BoController(BoService boService) {
         this.boService = boService;
@@ -26,7 +27,7 @@ public class BoController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<?> getById(@PathVariable UUID id) {
+    private ResponseEntity<?> getById(@PathVariable Long id) {
         return boService.getBoById(id);
     }
 
@@ -38,12 +39,18 @@ public class BoController {
     }
 
     @PutMapping("/edit/{id}")
-    private Bo update(@PathVariable UUID id, @RequestBody Bo bo) {
+    private ResponseEntity<?> update(@PathVariable Long id, @RequestBody Bo bo) {
         return boService.editBo(id, bo);
     }
 
     @DeleteMapping("/delete/{id}")
-    private ResponseEntity<?> delete(@PathVariable UUID id) {
+    private ResponseEntity<?> delete(@PathVariable Long id) {
         return boService.deleteBo(id);
+    }
+
+    @DeleteMapping("/clear")
+    private ResponseEntity<?> clear() {
+        boService.deleteAllBos();
+        return new ResponseEntity<>("List cleared", HttpStatus.NO_CONTENT);
     }
 }
