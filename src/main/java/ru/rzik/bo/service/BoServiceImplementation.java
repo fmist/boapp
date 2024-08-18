@@ -57,7 +57,7 @@ public class BoServiceImplementation implements BoService {
             boRepository.deleteById(id);
             return ResponseEntity.ok().body("Id " + id + " deleted");
         } else {
-            return ResponseEntity.status(404).body("Id " + id + " not found");
+            throw new BoException("Id " + id + " not found");
         }
     }
 
