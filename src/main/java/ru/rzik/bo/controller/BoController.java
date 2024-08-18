@@ -61,4 +61,11 @@ public class BoController {
         errorData.setInfo(exception.getMessage());
         return new ResponseEntity<>(errorData, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler
+    private ResponseEntity<BoErrorData> handleException(Exception exception) {
+        BoErrorData errorData = new BoErrorData();
+        errorData.setInfo(exception.getMessage());
+        return new ResponseEntity<>(errorData, HttpStatus.BAD_REQUEST);
+    }
 }
