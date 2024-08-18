@@ -6,16 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 @Entity
 public class Bo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private UUID id;
+    private Long id;
     private String name;
     private String description;
 

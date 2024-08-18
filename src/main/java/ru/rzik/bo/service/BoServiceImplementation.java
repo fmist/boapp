@@ -4,11 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import ru.rzik.bo.exception.BoException;
 import ru.rzik.bo.model.Bo;
 import ru.rzik.bo.repository.BoRepository;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Optional;
 
 @Service
 public class BoServiceImplementation implements BoService {
@@ -25,13 +26,12 @@ public class BoServiceImplementation implements BoService {
     }
 
     @Override
-    public ResponseEntity<?> getBoById(UUID id) {
-        try {
-            Bo bo = boRepository.findById(id).orElseThrow();
-            return ResponseEntity.ok().body(bo);
-        } catch (Exception e) {
-            return ResponseEntity.status(404).body("Id " + id + " not found");
+    public ResponseEntity<?> getBoById(@PathVariable Long id) {
+        Optional<Bo> bo = boRepository.findById(id);
+        if (bo.isEmpty()) {
+            throw new BoException("Id " + id + " not found");
         }
+        return ResponseEntity.ok().body(bo);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class BoServiceImplementation implements BoService {
     }
 
     @Override
-    public ResponseEntity<?> editBo(UUID id, Bo bo) {
+    public ResponseEntity<?> editBo(Long id, Bo bo) {
         if (boRepository.existsById(id)) {
             Bo newBo = boRepository.findById(id).orElseThrow();
             newBo.setName(bo.getName());
@@ -52,7 +52,7 @@ public class BoServiceImplementation implements BoService {
     }
 
     @Override
-    public ResponseEntity<?> deleteBo(@PathVariable UUID id) {
+    public ResponseEntity<?> deleteBo(@PathVariable Long id) {
         if (boRepository.existsById(id)) {
             boRepository.deleteById(id);
             return ResponseEntity.ok().body("Id " + id + " deleted");

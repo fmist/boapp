@@ -3,13 +3,14 @@ package ru.rzik.bo.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.rzik.bo.exception.BoErrorData;
+import ru.rzik.bo.exception.BoException;
 import ru.rzik.bo.model.Bo;
 import ru.rzik.bo.service.BoService;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping()
@@ -27,7 +28,7 @@ public class BoController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<?> getById(@PathVariable UUID id) {
+    private ResponseEntity<?> getById(@PathVariable Long id) {
         return boService.getBoById(id);
     }
 
@@ -39,12 +40,12 @@ public class BoController {
     }
 
     @PutMapping("/edit/{id}")
-    private ResponseEntity<?> update(@PathVariable UUID id, @RequestBody Bo bo) {
+    private ResponseEntity<?> update(@PathVariable Long id, @RequestBody Bo bo) {
         return boService.editBo(id, bo);
     }
 
     @DeleteMapping("/delete/{id}")
-    private ResponseEntity<?> delete(@PathVariable UUID id) {
+    private ResponseEntity<?> delete(@PathVariable Long id) {
         return boService.deleteBo(id);
     }
 
@@ -52,5 +53,12 @@ public class BoController {
     private ResponseEntity<?> clear() {
         boService.deleteAllBos();
         return new ResponseEntity<>("List cleared", HttpStatus.NO_CONTENT);
+    }
+
+    @ExceptionHandler
+    private ResponseEntity<BoErrorData> handleException(BoException exception) {
+        BoErrorData errorData = new BoErrorData();
+        errorData.setInfo(exception.getMessage());
+        return new ResponseEntity<>(errorData, HttpStatus.NOT_FOUND);
     }
 }
