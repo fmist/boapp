@@ -8,7 +8,6 @@ pipeline {
     }
 
     stages {
-
         stage('Get project') {
             steps {
                 git 'https://github.com/fmist/boapp.git'
@@ -19,6 +18,21 @@ pipeline {
             steps {
                 sh "gradle clean build -D skipTests"
             }
+        }
+        stage('Sonar') {
+        steps {
+        node {
+          stage('SCM') {
+            checkout scm
+          }
+          stage('SonarQube Analysis') {
+            withSonarQubeEnv() {
+              sh "./gradlew sonar"
+            }
+          }
+        }
+
+       }
         }
 
         stage('Deploy') {

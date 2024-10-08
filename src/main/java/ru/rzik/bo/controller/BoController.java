@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping()
-@CrossOrigin(origins = {"http://192.168.51.254:3000", "http://192.168.51.254:8083"})
+@CrossOrigin(origins = {"http://192.168.51.153:3000", "http://192.168.51.153:8083"})
 public class BoController {
 
     private final BoService boService;
