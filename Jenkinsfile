@@ -19,9 +19,9 @@ pipeline {
                 sh "gradle clean build -D skipTests"
             }
         }
-         stage('SCM') {
-            checkout scm
-          }
+//          stage('SCM') {
+//             checkout scm
+//           }
           stage('SonarQube Analysis') {
             withSonarQubeEnv() {
               sh "./gradlew sonar"
