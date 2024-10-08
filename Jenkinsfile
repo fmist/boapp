@@ -19,14 +19,16 @@ pipeline {
                 sh "gradle clean build -D skipTests"
             }
         }
-//          stage('SCM') {
-//             checkout scm
-//           }
+        node {
+          stage('SCM') {
+            checkout scm
+          }
           stage('SonarQube Analysis') {
             withSonarQubeEnv() {
               sh "./gradlew sonar"
             }
           }
+        }
         stage('Deploy') {
              environment {
                 DB_DATA = credentials('mysql')
