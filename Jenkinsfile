@@ -20,11 +20,8 @@ pipeline {
             }
         }
         stage('Deploy') {
-             environment {
-                DB_DATA = credentials('freemysqlhosting')
-             }
              steps {
-               sh "USER=sql7738695 PASSWORD=8r2Crcrh9v docker-compose up -d --wait --build"
+               sh "docker-compose up -d --wait --build"
              }
         }
     }
