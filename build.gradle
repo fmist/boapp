@@ -34,8 +34,7 @@ sonar {
     properties {
         property "sonar.projectKey", "boapp"
         property "sonar.projectName", "boapp"
-        property "sonar.login", "admin"
-        property "sonar.password", "Boappboapp1-!"
+        property "sonar.token", "squ_225920f6f66f48b088485672fe6be034237ad456"
     }
 }
 
