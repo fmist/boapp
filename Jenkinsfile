@@ -20,10 +20,10 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            withSonarQubeEnv() {
+            steps {
               sh "gradle sonar"
             }
-            }
+        }
         stage('Deploy') {
              steps {
                sh "docker-compose up -d --wait --build"
