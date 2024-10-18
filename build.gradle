@@ -32,8 +32,8 @@ dependencies {
 
 sonar {
     properties {
-        property "sonar.projectKey", "asd"
-        property "sonar.projectName", "asd"
+        property "sonar.projectKey", "boapp"
+        property "sonar.projectName", "boapp"
     }
 }
 
