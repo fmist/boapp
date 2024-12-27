@@ -24,15 +24,10 @@ pipeline {
 //               sh "gradle sonar"
 //             }
 //         }
-//         stage('Deploy') {
-//              steps {
-//                sh "docker-compose up -d --wait --build"
-//              }
-//         }
-        stage("Run") {
-            steps {
-                sh "java -jar build/libs/bo-0.0.1-SNAPSHOT.jar"
-            }
+        stage('Deploy') {
+             steps {
+               sh "docker-compose up -d --wait --build"
+             }
         }
     }
       post {
