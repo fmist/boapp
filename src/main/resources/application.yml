@@ -1,11 +1,10 @@
 server:
   port: 8083
-spring:
-  datasource:
-    url: jdbc:mysql://sql7.freemysqlhosting.net/sql7738695
-    username: sql7738695
-    password: 8r2Crcrh9v
-
+#spring:
+#  datasource:
+#    url: jdbc:mysql://sql7.freemysqlhosting.net/sql7738695
+#    username: sql7738695
+#    password: 8r2Crcrh9v
   jpa:
     hibernate:
       ddl-auto: update

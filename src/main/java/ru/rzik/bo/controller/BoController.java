@@ -1,5 +1,6 @@
 package ru.rzik.bo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping()
-@CrossOrigin(origins = {"http://192.168.51.153:3000", "http://192.168.51.153:8083"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8083"})
 public class BoController {
 
     private final BoService boService;
