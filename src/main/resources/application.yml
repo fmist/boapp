@@ -8,3 +8,7 @@ server:
   jpa:
     hibernate:
       ddl-auto: update
+spring:
+  output:
+    ansi:
+      enabled: always

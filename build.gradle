@@ -30,6 +30,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.3'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 }
 
 sonar {
