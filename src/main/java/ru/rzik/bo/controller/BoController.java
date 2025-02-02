@@ -1,6 +1,6 @@
 package ru.rzik.bo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping()
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8083"})
+@RequiredArgsConstructor
 public class BoController {
 
     private final BoService boService;
-
-    public BoController(BoService boService) {
-        this.boService = boService;
-    }
 
     @GetMapping
     private List<Bo> getAll() {

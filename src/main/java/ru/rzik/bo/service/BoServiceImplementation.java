@@ -1,5 +1,6 @@
 package ru.rzik.bo.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,13 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BoServiceImplementation implements BoService {
 
     private final BoRepository boRepository;
-
-    public BoServiceImplementation(BoRepository boRepository) {
-        this.boRepository = boRepository;
-    }
 
     @Override
     public List<Bo> getAllBos() {

@@ -1,7 +1,6 @@
 package ru.rzik.bo;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -17,12 +16,12 @@ public class ToDoSimpleRestTemplateTests {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void toDoTest() {
+    public void post() {
         Bo bo = new Bo();
         bo.setName("12313");
         bo.setDescription("asdasdasd");
         ResponseEntity<Bo> responseEntity = restTemplate.postForEntity("/add", bo, Bo.class);
         System.out.println(responseEntity.getBody());
-        assertThat(responseEntity.getStatusCode().is4xxClientError()).isTrue();
+        assertThat(responseEntity.getStatusCode().is2xxSuccessful()).isTrue();
     }
 }
