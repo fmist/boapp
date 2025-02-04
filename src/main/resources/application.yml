@@ -12,3 +12,10 @@ spring:
   output:
     ansi:
       enabled: always
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+    template:
+      default-topic: my-topic

@@ -9,6 +9,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import ru.rzik.bo.model.Bo;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -18,13 +20,17 @@ public class ToDoSimpleRestTemplateTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Test
-    public void post() {
+    @Test()
+    public void postAndGetCreated() {
         Bo bo = new Bo();
         bo.setName("12313");
         bo.setDescription("asdasdasd");
         ResponseEntity<Bo> responseEntity = restTemplate.postForEntity("/add", bo, Bo.class);
         log.info("responseEntity: {}", responseEntity);
         assertThat(responseEntity.getStatusCode().is2xxSuccessful()).isTrue();
+
+        assertThat(responseEntity.getBody().getName()).isEqualTo("12313");
+        assertThat(responseEntity.getBody().getDescription()).isEqualTo("asdasdasd");
+        assertThat(responseEntity.getBody().getId()).isEqualTo(1);
     }
 }
