@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useOptimistic } from 'react';
 
 const ModalDeleteProduct = ({OnChange}) => {
 
@@ -24,14 +25,14 @@ const ModalDeleteProduct = ({OnChange}) => {
                 </Modal.Header>
                 <Modal.Body>Are you sure?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="outline-primary" onClick={handleClose}>
+                    <Button variant="outline-secondary" onClick={handleClose}>
                         Cancel
                     </Button>
                     <Button variant="danger" onClick={
                         function (e) {
                             handleChange(e)
-                            window.location.replace("/")
-                            window.location.reload();
+                            window.location.href = "/";
+                            window.location.reload()
                         }
                     }>
                         Submit

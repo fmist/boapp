@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Container, Form, InputGroup} from "react-bootstrap";
 import {addProduct} from "../api/Axios";
-import {useNavigate} from 'react-router';
 
 const InputBar = () => {
     const [product, setProduct] = useState(
@@ -14,11 +13,10 @@ const InputBar = () => {
     const onInputChange = (e) => {
         setProduct({...product, [e.target.name]: e.target.value})
     }
-    let navigate = useNavigate()
 
     return (
         <Container className="w-50">
-            <InputGroup className="mb-1">
+            <InputGroup className="mb-2">
                 <InputGroup.Text id="inputGroup-sizing-default">
                     Name
                 </InputGroup.Text>
@@ -34,7 +32,7 @@ const InputBar = () => {
             </InputGroup>
             <InputGroup className="mb-3">
                 <InputGroup.Text id="inputGroup-sizing-default">
-                    Desc
+                    Description
                 </InputGroup.Text>
                 <Form.Control
                     aria-label="Default"
@@ -50,7 +48,7 @@ const InputBar = () => {
                 function () {
                     addProduct(product)
                         .then(r => {console.log(r.data)})
-                    window.location.replace("/");
+                    window.location.href = "/"
                 }
             }>Submit</Button>
         </Container>

@@ -31,7 +31,7 @@ export default function ShopList() {
                         <td className="text-right w-25">
                             <Button className="me-2"
                                     variant="primary"
-                                    onClick={() => navigate(`/edit/${posts.id}`)}
+                                    onClick={() => window.location.href = `/edit/${posts.id}`}
                             >Edit
                             </Button>
                             <ModalDeleteProduct OnChange={() => deleteProduct(posts.id)}/>
