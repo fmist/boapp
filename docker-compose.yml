@@ -1,6 +1,14 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "bodb"
+      POSTGRES_USER: "boadmin"
+      POSTGRES_PASSWORD: "bopass"
+    ports:
+      - "5432:5432"
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     environment:

@@ -31,6 +31,7 @@ const ModalDeleteProduct = ({OnChange}) => {
                         function (e) {
                             handleChange(e)
                             window.location.replace("/")
+                            window.location.reload();
                         }
                     }>
                         Submit
