@@ -5,7 +5,8 @@ import ru.rzik.bo.model.Bo;
 
 import java.util.List;
 
-public interface BoService {
+public interface  BoService {
+
     List<Bo> getAllBos();
 
     ResponseEntity<?> getBoById(Long id);
@@ -17,4 +18,5 @@ public interface BoService {
     ResponseEntity<?> deleteBo(Long id);
 
     void deleteAllBos();
+
 }
