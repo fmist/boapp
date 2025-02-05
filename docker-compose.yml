@@ -2,6 +2,7 @@ version: "3"
 services:
 
   backend:
+    container_name: backend
     image: 'backend'
     build:
       context: .
@@ -16,18 +17,18 @@ services:
       SPRING_DATASOURCE_PASSWORD: admin
 
   mysql:
+    container_name: mysql
     image: mysql
     environment:
         MYSQL_ROOT_PASSWORD: admin
-#        MYSQL_DATABASE: bodb
+        MYSQL_DATABASE: bodb
         MYSQL_USER: admin
         MYSQL_PASSWORD: admin
     ports:
       - "3306:3306"
     volumes:
       - my-db-volume:/var/lib/mysql
-      - ./init.sql:/docker-entrypoint-initdb.d./init.sql
-    restart: unless-stopped
+#    restart: unless-stopped
 
 #  frontend:
 
