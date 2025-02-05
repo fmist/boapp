@@ -17,7 +17,7 @@ spring:
       default-topic: my-topic
 
   datasource:
-    url: jdbc:mysql://localhost:3306/bodb
+    url: jdbc:mysql://mysql:3306/bodb
     username: admin
     password: admin
 
