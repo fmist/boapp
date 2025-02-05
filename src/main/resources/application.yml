@@ -1,9 +1,13 @@
+logging.level.root: warn
+
 server:
   port: 8083
+
 spring:
   output:
     ansi:
       enabled: always
+
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -11,10 +15,13 @@ spring:
       auto-offset-reset: earliest
     template:
       default-topic: my-topic
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/bodb
-    username: boadmin
-    password: bopass
+    url: jdbc:mysql://localhost:3306/bodb
+    username: admin
+    password: admin
+
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: update
