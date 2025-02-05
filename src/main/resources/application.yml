@@ -20,7 +20,8 @@ spring:
     url: jdbc:mysql://mysql:3306/bodb
     username: admin
     password: admin
-    driver-class-name: com.mysql.jdbc.Driver
+
+
 
   jpa:
     show-sql: true
@@ -29,3 +30,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+  sql:
+    init:
+      mode: always
+      platform: mysql
