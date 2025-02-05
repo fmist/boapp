@@ -15,20 +15,20 @@ spring:
       auto-offset-reset: earliest
     template:
       default-topic: my-topic
-
-  datasource:
-    url: jdbc:mysql://mysql:3306/bodb
-    username: admin
-    password: admin
-
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-  sql:
-    init:
-      mode: always
-      platform: mysql
+#
+#  datasource:
+#    url: jdbc:mysql://mysql:3306/bodb
+#    username: admin
+#    password: admin
+#
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQLDialect
+#  sql:
+#    init:
+#      mode: always
+#      platform: mysql
